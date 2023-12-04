@@ -1,6 +1,0 @@
-.vscode
-__build
-__pycache__
-*.aux
-*.pdf
-*.gz

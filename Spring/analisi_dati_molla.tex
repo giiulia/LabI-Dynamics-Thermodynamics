@@ -1,0 +1,609 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+
+
+
+\title{Caratterizzazione di una molla e studio del moto armonico\\ analisi dei dati}
+\author{Ali Matteo,\\Broggi Diana, Cantarini Giulia}
+\date{ }
+
+\usepackage{tabularx}
+\usepackage{natbib}
+%\usepackage[demo]{graphicx}
+\usepackage{graphicx}
+
+%\usepackage[margin=1.0in]{geometry}
+
+\usepackage{tikz}
+
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{amsmath, amsthm}
+
+\usepackage{mathrsfs}
+
+\usepackage{pgfplots}
+
+\usepackage{caption}
+
+
+
+%\pgfplotsset{width=4cm,compat=1.9}
+
+\theoremstyle{definition}
+\newtheorem{rich}{richiamo matematico}[section]
+
+
+
+
+
+%roba che crea comando per centrare immagine dentro immagine piu grande
+%https://tex.stackexchange.com/a/308286
+\newlength{\imagew}
+\newlength{\imageh}
+\newlength{\legendw}
+\newlength{\legendh}
+\newlength{\legendx}
+\newlength{\legendy}
+\newcommand{\graphicswithlegend}[6]{
+	\setlength{\imagew}{#1}
+	\settoheight{\imageh}{\includegraphics[width=\imagew]{#2}}
+	
+	\setlength{\legendw}{#3\imagew}
+	\settoheight{\legendh}{\includegraphics[width=\legendw]{#4}}
+	
+	\setlength{\legendx}{\imagew}
+	\addtolength{\legendx}{-\legendw}
+	\addtolength{\legendx}{-#5\imagew}
+	
+	\setlength{\legendy}{\imageh}
+	\addtolength{\legendy}{-\legendh}
+	\addtolength{\legendy}{-#6\imageh}
+	
+	\includegraphics[width=\imagew]{#2}%
+	\llap{
+		\hspace{-\the\legendx}
+		\raisebox{\legendy}{\includegraphics[width=\legendw]{#4}}
+		\hspace{\the\legendx}
+	}
+}
+
+
+
+\begin{document}
+	\pagenumbering{arabic}
+	\maketitle
+	
+\section*{Metodo statico}
+Per stabilire la relazione tra massa appesa e allungamento della molla  abbiamo utilizzato i grafici fornitici.	
+\begin{figure}[!htbp]
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{1.20 \textwidth}{!}{
+	\begin{subfigure}{0.7\textwidth}
+		\includegraphics[scale=0.45]{capstone_data/statica/molla1.png}
+	\end{subfigure}%
+
+	\begin{subfigure}{0.7\textwidth}
+		\includegraphics[scale=0.45]{capstone_data/statica/molla2.png}
+	\end{subfigure}%
+		}
+	}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{1.40 \textwidth}{!}{
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[scale=0.35]{capstone_data/statica/molla3.png}
+			\end{subfigure}%
+			
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[scale=0.35]{capstone_data/statica/parallelo.png}
+			\end{subfigure}%
+		
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[scale=0.35]{capstone_data/statica/serie.png}
+			\end{subfigure}%
+		}
+	}
+\end{figure}
+\noindent abbiamo ricavato l'allungamento relativo a ogni massa eseguendo la differenza tra l'altezza di ogni gradino ed il primo; di sotto riportiamo i risultati di questi calcoli ed i relativi grafici di \(x_{0(m)}\).
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{Molla1 - allungamento}
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.30 \textwidth}{!}{
+			\begin{tabular}{||c|c||}
+				\hline
+				\hline
+				\(X_{0}\) (m)&	Masse (Kg)\\
+				0.0000&	0.000\\
+				0.0060&	0.020\\
+				0.0121&	0.040\\
+				0.0182&	0.060\\
+				0.0304&	0.100\\
+				0.0625&	0.200\\
+				0.0937&	0.300\\
+				0.1255&	0.400\\
+				0.1556&	0.500\\
+				0.2172&	0.700\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+	
+\begin{figure}[!htbp]
+	\captionsetup{labelformat = empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.90 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{capstone_data/statica/retta_molla1.png}
+		} %close resize
+	} %close centering
+	\caption{interpolazione dei dati sull'allungamento della Molla1}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{Molla2 - allungamento}
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.30 \textwidth}{!}{
+			\begin{tabular}{||c|c||}
+				\hline
+				\hline
+				\(X_{0}\) (m)&	Masse (Kg)\\
+				0.0000&	0.000\\
+				0.0062&	0.020\\
+				0.0123&	0.040\\
+				0.0183&	0.060\\
+				0.0304&	0.100\\
+				0.0608&	0.200\\
+				0.0912&	0.300\\
+				0.1226&	0.400\\
+				0.1541&	0.500\\
+				0.2140&	0.700\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+
+
+\begin{figure}[!htbp]
+		\captionsetup{labelformat = empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.90 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{capstone_data/statica/retta_molla2.png}
+		} %close resize
+	} %close centering
+	\caption{interpolazione dei dati sull'allungamento della Molla2}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{Molla3 - allungamento}
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.30 \textwidth}{!}{
+			\begin{tabular}{||c|c||}
+				\hline
+				\hline
+				\(X_{0}\) (m)&	Masse (Kg)\\
+				0.0000&	0.000\\
+				0.0119&	0.020\\
+				0.0235&	0.040\\
+				0.0352&	0.060\\
+				0.0585&	0.100\\
+				0.0713&	0.120\\
+				0.0821&	0.140\\
+				0.0947&	0.160\\
+				0.1185&	0.200\\
+				0.1751&	0.300\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat = empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.90 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{capstone_data/statica/retta_molla3.png}
+		} %close resize
+	} %close centering
+	\caption{interpolazione dei dati sull'allungamento della Molla3}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{Parallelo 1-2 - allungamento}
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.35 \textwidth}{!}{
+			\begin{tabular}{||c|c||}
+				\hline
+				\hline
+				\(X_{0}\) (m)&	Masse (Kg)\\
+				0.0000&	0.000\\
+				0.0062&	0.040\\
+				0.0093&	0.060\\
+				0.0153&	0.100\\
+				0.0305&	0.200\\
+				0.0457&	0.300\\
+				0.0612&	0.400\\
+				0.0767&	0.500\\
+				0.1074&	0.700\\
+				0.1389&	0.900\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat = empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.90 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{capstone_data/statica/retta_parallelo.png}
+		} %close resize
+	} %close centering
+	\caption{interpolazione dei dati sull'allungamento delle molle 1-2 in parallelo}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{Serie 1-3 - allungamento}
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.35 \textwidth}{!}{
+			\begin{tabular}{||c|c||}
+				\hline
+				\hline
+				\(X_{0}\) (m)&	Masse (Kg)\\
+				0.0000&	0.000\\
+				0.0183&	0.020\\
+				0.0353&	0.040\\
+				0.0536&	0.060\\
+				0.0894&	0.100\\
+				0.1047&	0.120\\
+				0.1255&	0.140\\
+				0.1278&	0.160\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat = empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.90 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{capstone_data/statica/retta_serie.png}
+		} %close resize
+	} %close centering
+	\caption{interpolazione dei dati sull'allungamento delle molle 1-3 in serie}
+\end{figure}
+.\\\\\\\\\\\\\\\\\\\\\\\\
+
+\noindent da \(mg = kx_{0}\) abbiamo ricavato le k tramite i coefficienti angolari risultati dalle interpolazioni dei dati sopra riportati. Il calcolo del coefficiente angolare c.a. è stato svolto dal programma Capstone.\\
+\(\sigma_{c.a.}\) è stato corretto stimando a posteriori \(\sigma_{y}\) attraverso la formula:
+\[\sigma_{y} = \sqrt{\frac{\sum (y_{i}-A-Bx_{i})^{2}}{N-2}}\] 
+così facendo abbiamo ottenuto un'incertezza sul coefficiente più considerevole.
+\[k = \frac{g}{c.a.} \pm \sqrt{\left ( \frac{\partial k}{\partial g} \sigma _{g}\right )^{2} + \left ( \frac{\partial k}{\partial c.a.}\sigma _{c.a.} \right )^{2}}\]
+
+\begin{figure}[!htbp]
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.90 \textwidth}{!}{
+			\begin{tabular}{||c|c|c||}
+				\hline
+				\hline
+				molla & k - metodo statico (N/m) & k - metodo dinamico (N/m)\\
+				\hline
+				1 & \(31.4 \pm 0.1\) & \\
+				\hline
+				2 & \(32.06 \pm 0.08\) & \\
+				\hline
+				3 & \(16.74 \pm 0.07\) &\\
+				\hline
+				serie 1-3 & \(11.68 \pm 0.42\) & \\
+				\hline
+				parallelo 1-2 &  \(63.70 \pm 0.14\) &\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+.\\\\\\
+\section*{Metodo dinamico}
+
+Tramite i grafici della posizione in funzione del tempo è possibile ricavare una stima del periodo di oscillazione di ogni molla:
+\begin{figure}[!htbp]
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.90 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{capstone_data/dinamica/molla2_portapesi+40.png}
+		} %close resize
+	} %close centering
+	%\caption{}
+\end{figure}
+\noindent abbiamo calcolato la differenza di tempo tra il primo e l'ultimo massimo della funzione posizione e diviso per il numero n di periodi trascorsi. Riportiamo anche il risultato dell'interpolazione lineare effettuata da Capstone sui dati del periodo in funzione della massa appesa per ogni molla.\\
+
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{Molla1 - periodo}
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.55 \textwidth}{!}{
+			\begin{tabular}{||c|c|c|c||}
+				\hline
+				\hline
+				n &\(t_{f}-t_{i}\) & \(T\) (s)&	Masse (Kg)\\
+				\hline
+				14&4.85-0.10& 0.3393&	0.090\\
+				12&4.710-0.240&0.3725	&0.110\\
+				12&5.24-0.38&0.4050&	0.130\\
+				11&4.93-0.18&0.4318&	0.150\\
+				9&4.79-0.410&0.4867&	0.190\\
+				6&4.15-0.55&0.6000&	0.290\\
+				7 &5.08-0.18&0.7000&	0.390\\
+				6 & 5.26-0.55&0.7850&	0.490\\
+				5 &4.97-0.73&0.8480&	0.590\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.90 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{capstone_data/dinamica/Periodi_molla1.png}
+		} %close resize
+	} %close centering
+	\caption{interpolazione dei dati sul periodo della Molla1}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{Molla2 - periodo}
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.55 \textwidth}{!}{
+			\begin{tabular}{||c|c|c|c||}
+				\hline
+				\hline
+				n&\(t_{f}-t_{i}\) & \(T\) (s)&	Masse (Kg)\\
+				\hline
+				14 & 4.73-0.02 &0.3364&	0.090\\
+				12&4.56-0.10&0.3717&	0.110\\
+				11&4.75-0.33&0.4018&	0.130\\
+				11&4.81-0.07&0.4309&	0.150\\
+				9 &4.73-0.37&0.4844&	0.190\\
+				7&4.57-0.420&0.5929&	0.290\\
+				7&5.010-5.210&0.6857&	0.390\\
+				6 &5.12-0.520&0.7667&	0.490\\
+				5&4.92-0.74&0.8360&	0.590\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.90 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{capstone_data/dinamica/Periodi_molla2.png}
+		} %close resize
+	} %close centering
+	\caption{interpolazione dei dati sul periodo della Molla2}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{Molla3 - periodo}
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.55 \textwidth}{!}{
+			\begin{tabular}{||c|c|c|c||}
+				\hline
+				\hline
+				n & \(t_{f}-t_{i}\) & \(T\) (s)&	Masse (Kg)\\
+				\hline
+				10&4.83-0.15& 0.4680&	0.090\\
+				8&4.44-0.310&0.5162&	0.110\\
+				8&4.6-0.16 &0.5550&	0.130\\
+				7&4.44-0.240&0.6000&	0.150\\
+				7 &4.88-0.200&0.6686&	0.190\\
+				6&4.74-0.5&0.7067&	0.210\\
+				6 & 4.54-0.12 & 0.7367&	0.230\\
+				6 & 4.970-0.370 & 0.7667&	0.250\\
+				5 & 4.790-0.660 & 0.8260&	0.290\\
+				5&4.710-0.010& 0.9400&	0.390\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.90 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{capstone_data/dinamica/Periodi_molla3.png}
+		} %close resize
+	} %close centering
+	\caption{interpolazione dei dati sul periodo della Molla3}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{Parallelo 1-2 - periodo}
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.55 \textwidth}{!}{
+			\begin{tabular}{||c|c|c|c||}
+				\hline
+				\hline
+				n &\(t_{f}-t_{i}\) & \(T\) (s)&	Masse (Kg)\\
+				\hline
+				5&4.9-0.76&0.8280&	1.090\\
+				6&5.12-0.38& 0.7900&	0.990\\
+				6&4.76-0.21&0.7583&	0.890\\
+				7&5.00-0.030&0.7100&	0.790\\
+				7&5.19-0.55&0.6629&	0.690\\
+				8&4.95-0&0.6188&	0.590\\
+				9&5.34-0.27&0.5633&	0.490\\
+				9&4.89-0.31&0.5089&	0.390\\
+				10&4.77-0.31&0.4460&	0.290\\
+				12&4.67-0.23&0.3700&	0.190\\
+				17&4.91-0.18&0.2782&	0.090\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.90 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{capstone_data/dinamica/Periodi_parallelo.png}
+		} %close resize
+	} %close centering
+	\caption{interpolazione dei dati sul periodo delle molle 1-2 in parallelo}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{Serie 1-3 - periodo}
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.55 \textwidth}{!}{
+			\begin{tabular}{||c|c|c|c||}
+				\hline
+				\hline
+				n &\(t_{f}-t_{i}\) & \(T\) (s)&	Masse (Kg)\\
+				\hline
+				8&4.72-0.020&0.5875&	0.090\\
+				7&4.96-0.46&0.6429&	0.110\\
+				6&4.48-0.300&0.6967&	0.130\\
+				6&4.54-0.070&0.7450&	0.150\\
+				6&5.200-0.180&0.8367&	0.190\\
+				4&4.100-0.620&0.8700&	0.210\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.90 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{capstone_data/dinamica/Periodi_serie.png}
+		} %close resize
+	} %close centering
+	\caption{interpolazione dei dati sul periodo delle molle 1-3 in serie}
+\end{figure}
+.\\\\\\\\\\\\\\
+\noindent da \(T= 2\pi\sqrt{\frac{M}{k}}\) abbiamo ricavato k, il coefficiente \(\frac{4\pi^{2}}{k}\) è noto dall'interpolazione dei dati riportati nei grafici di \(T^{2}_{(M)}\).
+\[k = \frac{4\pi^{2}}{c.a.} \pm  \frac{\partial k}{\partial c.a.}\sigma _{c.a.}\]
+
+\begin{figure}[!htbp]
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.90 \textwidth}{!}{
+			\begin{tabular}{||c|c|c||}
+				\hline
+				\hline
+				molla & k - metodo statico (N/m) & k - metodo dinamico (N/m)\\
+				\hline
+				1 & \(31.44 \pm 0.1\) & \(32.1 \pm 0.3\)\\
+				\hline
+				2 & \(32.06 \pm 0.08\) &  \(33.5 \pm 0.2\)\\
+				\hline
+				3 & \(16.74 \pm 0.07\) & \(17.6 \pm 0.2\)\\
+				\hline
+				serie 1-3 & \(11.68 \pm 0.42\) & \(11.3 \pm 0.1\)\\
+				\hline
+				parallelo 1-2 &  \(63.70 \pm 0.14\) & \(64.5 \pm 0.4\)\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+.\\\\\\\\\\\\\\\\\\\\\
+\subsection*{confronti finali}
+
+\noindent Per confrontare i risultati ottenuti mediante i due metodi abbiamo eseguito il test t e calcolato la probabilità che la discrepanza rilevata fosse dovuta ad errori casuali. Per una probabilità \(< 0.3 \%\) scartiamo l'ipotesi.
+\[t = \frac{\left |x_{1}-x_{2}  \right |}{\sqrt{(\sigma_{1})^{2}+(\sigma_{2})^{2}}}\]
+
+\begin{figure}[!htbp]
+	\makebox[1 \textwidth][c]{
+		\resizebox{0.41 \textwidth}{!}{
+			\begin{tabular}{c|c|c}
+				\hline
+				\hline
+				molla & t & probabilità\\
+				\hline
+				1 & 2.09 & 3.6 \(\%\)\\
+				\hline
+				2 & 6.7 & \(<\)0.3 \(\%\)\\
+				\hline
+				3 & 4.06 & \(<\) 0.3 \(\%\)\\
+				\hline
+				serie 1-3 & 0.88 & 36.8 \(\%\)\\
+				\hline
+				parallelo 1-2 & 1.89 & 5.7 \(\%\)\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+
+
+	\noindent I valori attesi per le costanti elastiche di sistemi di molle in serie ed in parallelo sono:\\
+\(  \frac{1}{k_{eq}} = \frac{1}{k_{1}}+\frac{1}{k_{2}} \quad\) per le molle in serie \\
+\( k_{eq} = k_{1}+k_{2}\quad \)per le molle in parallelo\\
+\begin{figure}[!htbp]
+	\makebox[1 \textwidth][c]{
+		\resizebox{1.1 \textwidth}{!}{
+			\begin{tabular}{c|c|c|c|c}
+				\hline
+				\hline
+				sistema & valore atteso (N/m)& valore osservato staticamente (N/m)&t& probabilità\\
+				\hline
+				serie 1-3& \(10.92 \pm 0.15\) & \(11.68 \pm 0.42\) &1.7&8.9 \(\%\)\\
+				\hline
+				parallelo 1-2 &\(63.5 \pm 0.16\) & \(63.70 \pm 0.14\) &0.94& 37\(\%\)\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	} 
+\end{figure}
+
+\end{document}

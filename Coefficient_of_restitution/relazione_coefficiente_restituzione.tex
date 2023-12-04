@@ -1,0 +1,903 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+
+
+
+\title{Misura del coefficiente di restituzione}
+\author{Ali Matteo,\\Broggi Diana, Cantarini Giulia}
+\date{ }
+
+\usepackage{tabularx}
+\usepackage{natbib}
+\usepackage{graphicx}
+%\usepackage[demo]{graphicx}
+%\usepackage{subfig}
+%\usepackage[margin=1.0in]{geometry}
+
+\usepackage{tikz}
+
+\usepackage{amsmath, amsthm}
+
+\usepackage{mathrsfs}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+%\pgfplotsset{width=4cm,compat=1.9}
+
+\theoremstyle{definition}
+\newtheorem{rich}{richiamo matematico}[section]
+
+
+
+
+
+%roba che crea comando per centrare immagine dentro immagine piu grande
+%https://tex.stackexchange.com/a/308286
+\newlength{\imagew}
+\newlength{\imageh}
+\newlength{\legendw}
+\newlength{\legendh}
+\newlength{\legendx}
+\newlength{\legendy}
+\newcommand{\graphicswithlegend}[6]{
+	\setlength{\imagew}{#1}
+	\settoheight{\imageh}{\includegraphics[width=\imagew]{#2}}
+	
+	\setlength{\legendw}{#3\imagew}
+	\settoheight{\legendh}{\includegraphics[width=\legendw]{#4}}
+	
+	\setlength{\legendx}{\imagew}
+	\addtolength{\legendx}{-\legendw}
+	\addtolength{\legendx}{-#5\imagew}
+	
+	\setlength{\legendy}{\imageh}
+	\addtolength{\legendy}{-\legendh}
+	\addtolength{\legendy}{-#6\imageh}
+	
+	\includegraphics[width=\imagew]{#2}%
+	\llap{
+		\hspace{-\the\legendx}
+		\raisebox{\legendy}{\includegraphics[width=\legendw]{#4}}
+		\hspace{\the\legendx}
+	}
+}
+
+
+
+\begin{document}
+	\pagenumbering{arabic}
+	\maketitle
+	\section*{Introduzione}
+	L'obiettivo dell'esperimento era quello di calcolare il coefficiente di restituzione relativo a più coppie pallina-superficie, ovvero il parametro che misura l'elasticità del rimbalzo. Esso si definisce come il rapporto tra le velocità prima e dopo l'urto della pallina sulla superficie.
+	Per la misura del coefficiente di restituzione sono stati adoperati due metodi.\\
+	Il primo metodo consiste nel misurare l'altezza massima raggiunta dopo il primo rimbalzo dalla pallina. Questa è stata lasciata cadere con velocità iniziale nulla da una altezza \(h_{0}\) progressivamente maggiore.\\
+	Il secondo prevede la misura dell'intervallo di tempo che intercorre tra un rimbalzo ed il sucessivo.
+	\section*{Pallina da ping pong su parquet}
+	\subsubsection*{metodo 1}
+	Elenchiamo i dati rilevati per l'altezza massima raggiunta in centimentri.\\
+	Altezza di partenza : \(h_{0}\) = 5cm
+	\begin{figure}[!htbp]
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|cccccccccc}
+				\hline
+				\hline
+				\(h_{1}\) &4.40 & 4.50 & 4.40 & 4.60 & 4.60 & 4.30 & 4.50 & 4.60 & 4.50 & 4.70\\
+				\hline
+				\hline
+			\end{tabular}
+		} %close centering
+	\end{figure}
+	
+	\noindent Altezza di partenza : \(h_{0}\) = 7.5cm
+	\begin{figure}[!htbp]
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|cccccccccc}
+				\hline
+				\hline
+				\(h_{1}\) &6.60 & 6.70 & 6.70 & 6.90 & 6.70 & 6.90 & 6.90 & 6.80 & 6.90 & 6.80\\
+				\hline
+				\hline
+			\end{tabular}
+		} %close centering
+	\end{figure}
+	
+	\noindent Altezza di partenza : \(h_{0}\) = 8 cm
+	\begin{figure}[!htbp]
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|cccccccccc}
+				\hline
+				\hline
+				\(h_{1}\) &7.40 & 7.50 & 7.40 & 7.50 & 7.50 & 7.30 & 7.40 & 7.50 & 7.40 & 7.30\\
+				\hline
+				\hline
+			\end{tabular}
+		} %close centering
+	\end{figure}
+	
+	\noindent Altezza di partenza : \(h_{0}\) = 10cm
+	\begin{figure}[!htbp]
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|cccccccccc}
+				\hline
+				\hline
+				\(h_{1}\) &8.80 & 9.00 & 8.90 & 8.70 & 8.90 & 8.90 & 8.70 & 8.90 & 8.70 & 9.00\\
+				\hline
+				\hline
+			\end{tabular}
+		} %close centering
+	\end{figure}
+	
+	\noindent Altezza di partenza : \(h_{0}\) = 18 cm
+	\begin{figure}[!htbp]
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|cccccccccc}
+				\hline
+				\hline
+				\(h_{1}\) &15.7 & 15.8 & 15.8 & 15.6 & 16.0 & 15.4 & 15.9 & 15.5 & 16.0 & 16.1\\
+				\hline
+				\hline
+			\end{tabular}
+		} %close centering
+	\end{figure}
+	\\\\
+	\noindent Altezza di partenza : \(h_{0}\) = 30 cm
+	\begin{figure}[!ht]
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|cccccccccc}
+				\hline
+				\hline
+				\(h_{1}\) &24.8 & 24.8 & 25.0 & 24.9 & 24.9 & 25.0 & 24.9 & 25.1 & 25.1 & 25.1\\
+				\hline
+				\hline
+			\end{tabular}
+		} %close centering
+	\end{figure}
+	
+	\noindent Abbiamo calcolato la media di ogni altezza massima h1 e l'errore su tale stima, di sotto riportiamo una tabella riassuntiva:\\
+	
+	\begin{figure}[!htbp]
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|c|c}
+				
+				\(h_{0}\) (cm) & media \(h_{1}\) (cm) & \(\sigma_{m}\) (cm)\\
+				\hline
+				5 & 4.51 & 0.04\\
+				
+				7.5 & 6.79 &  0.03\\
+				
+				8 & 7.42 &  0.02\\
+				
+				10 & 8.85 & 0.04\\
+				
+				18 & 15.78 & 0.07\\
+				
+				30 & 24.96 & 0.04\\
+				\hline
+			\end{tabular}
+		} %close centering
+	\end{figure}
+	
+	\noindent La rappresentazione delle altezze raggiunte dopo il primo rimbalzo in funzione dell'altezza di partenza è riportata nella Figura1:
+	\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\resizebox{0.7 \textwidth}{!}{   %resize table
+				%\input{computed_data/hist_and_gauss.pgf}
+				\includegraphics{Metodo1/computed_data/zoom_pallina1.png}
+			} %close resize
+		} %close centering
+		\caption{Figura1: \(h1_{(h0)}\) - pallina da ping pong su parquet}
+	\end{figure}
+	
+	\noindent Procediamo con l'interpolazione di tutti i punti al fine di ricavare il grafico della retta che meglio rappresenta questa distribuzione.\\\\
+	Utilizzando il metodo dei minimi quadrati pesati abbiamo calcolato il coefficiente angolare e l'intercetta della retta:\\
+	\[ con\quad\Delta = N(\sum \frac{x_{i}^{2}}{\sigma _{y_{i}}^{2}})-(\sum \frac{x_{i}}{\sigma _{y_{i}}^{2}})^{2}\]\\
+	\[B = \frac{N(\sum\frac{x_{i}y_{i}}{\sigma _{y_{i}}^{2}})-\sum\frac{x_{i}}{\sigma _{y_{i}}^{2}}\sum\frac{y_{i}}{\sigma _{y_{i}}^{2}}}{\Delta } \quad
+	\sigma _{B} = \sqrt{\frac{\sum \frac{1}{\sigma _{y_{i}}^{2}}}{\Delta}} \qquad
+	\Rightarrow \qquad B = 0.814 \pm 0.002\]\\
+	\[A = \frac{\sum \frac{(x_{i})^{2}}{\sigma _{y_{i}}^{2}}\sum \frac{(y_{i})^{2}}{\sigma _{y_{i}}^{2}}-\sum \frac{x_{i}}{\sigma _{y_{i}}^{2}}\sum \frac{x_{i}y_{i}}{\sigma _{y_{i}}^{2}}}{\Delta} \quad  \sigma _{A} = \sqrt{\frac{\sum \frac{x^{2}}{\sigma _{y_{i}}^{2}}}{\Delta}} \qquad \Rightarrow \qquad A = (0.75 \pm 0.03) cm\]\\
+	\noindent Riportiamo di sotto il grafico della retta interpolata per i dati relativi alla prima coppia pallina-superficie.
+	\begin{figure}[!ht]
+		\captionsetup{labelformat = empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\resizebox{0.7 \textwidth}{!}{   %resize table
+				\includegraphics{Metodo1/computed_data/interpolazione_pallina1.png}
+			} %close resize
+		} %close centering
+		\caption{Figura2: interpolazione dei dati - pallina da ping pong su parquet}
+	\end{figure}
+	
+	\noindent Poichè sappiamo che il coefficiente di restituzione ev è definito come \(\frac{v_{1}}{v_{0}}\), se trascuriamo l'attrito dell'aria il rapporto tra le due velocità può essere scritto in funzione solo delle altezze \(h_{1}\) e \(h_{0}\):
+	\[\frac{h_{1}}{h_{0}} = (\frac{v_{1}}{v_{0}})^{2}\] 
+	da tale espressione ricaviamo una prima stima del coefficiente di restituzione con i dati in nostro possesso, attraverso l'ugualianza:
+	\[ev = \sqrt{\frac{h_{1}}{h_{0}}} \rightarrow ev = \sqrt{B}\]
+	
+	\makebox[\textwidth]{
+		{	
+			\small
+			dove B è il coefficiente angolare della retta \(h_{1}(h_{0})\)
+		}
+	}
+	\\\\
+	Svolgendo il calcolo e ricavando \(\sigma_{ev}\) con la propagazione degli errori come \(\sigma _{ev} = \frac{\sigma _{B}}{2\sqrt{B}}\), abbiamo ottenuto \(ev = 0.902 \pm 0.001\).\\
+	\noindent Abbiamo eseguito il test del chi quadro per verificare che la distribuzione delle misure potesse effettivamente essere descritta da una retta:
+	\[\chi ^{2} = \sum \left ( \frac{y_{i}-A-BX_{i}}{\sigma_{i}} \right )^{2} = 14\]
+	\noindent considerando 4 gradi di libertà \(\tilde{\chi}^{2} = 3.5\); riscontriamo una probabilità pari a 0.7\(\%\) che le sei misure possano essere descritte da una distribuzione lineare. Poichè tale percentuale è al di sotto del 5\(\%\), abbiamo deciso di scartare l'ipotesi.\\\\
+	Tale disaccordo con la distribuzione attesa ci porta a supporre di aver commesso degli errori sistematici. Ad esempio, non è stato considerato l'effetto dell'attrito dell'aria, che diventa significativo all'aumentare di \(h_{0}\). Il contributo relativo all'attrito dell'aria una volta superata una determinata altezza limite si può stimare attraverso il rapporto:
+	\[\frac{F_{attrito \quad aereo}}{F_{peso}} = \frac{\rho_{aria} \pi \cdot 0.4 d^{2}}{4m}h_{lim}\]
+	considerando \(h_{lim} = 10 cm\), la massa della pallina come 0.0027Kg ed il diametro d =0.055 metri, tale rapporto equivale a: 0.043.\\
+	Dunque l'effetto dell'accelerazione di gravità sulla pallina, a causa dell'attrito, è ridotto del 4.3\(\%\). Abbiamo corretto l'errore riducendo la regione di interpolazione al di sotto dei 10 cm:
+	\[B = 0.944 \pm 0.015\]
+	\[A = (-0.18 \pm 0.11) cm\] 
+	dai risultati della interpolazione corretta possiamo stimare nuovamente il coeffieciente di restituzione come \(ev = 0.971 \pm 0.008 \)
+	\[\chi ^{2}corretto = 0.697\]
+	nel caso con soli 3 punti possiamo considerare l'ipotesi vera, con una sicurezza, per 1 solo grado di libertà, del 37 \(\%\). \\\\
+	
+	\subsubsection*{metodo 2}
+	%metodo due pallina 1
+	Attraverso un sistema di rilevamento sonoro, l'applicazione Pyphox ci ha permesso di acquisire gli intervalli di tempo che intercorrevano tra i rimbalzi successivi della pallina. L'applicazione permetteva di creare un file excel su cui ognuno di noi ha salvato i dati ricavati dai 5 lanci effetuati per ogni altezza.\\\\
+	Intervalli misurati da 8cm in secondi:
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.255 & 0.253 & 0.251 & 0.250 & 0.249 & \\
+				\hline
+				2 & 0.242 & 0.239 & 0.238 & 0.237 & 0.236 & \\
+				\hline
+				3 & 0.226 & 0.233 & 0.226 & 0.225 & 0.223 & \\
+				\hline
+				4 & 0.217 & 0.213 & 0.213 & 0.214 & 0.212 & \\
+				\hline
+				5 & 0.207 & 0.202 & 0.203 & 0.203 & 0.201 & \\
+				\hline
+				6 & 0.196 & 0.191 & 0.193 & 0.193 & 0.192 & \\
+				\hline
+				7 & 0.183 & 0.182 & 0.183 & 0.183 & 0.182 & \\
+				\hline
+				8 & 0.174 & 0.173 & 0.175 & 0.174 & 0.174 & \\
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+
+
+	.\\\\\\\\\\\\\\
+	\noindent Intervalli misurati da 10cm in secondi:
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.277 & 0.273 & 0.275 & 0.277 & 0.274 & \\
+				\hline
+				2 & 0.262 & 0.258 & 0.263 & 0.259 & 0.261 & \\
+				\hline
+				3 & 0.247 & 0.245 & 0.245 & 0.247 & 0.244 & \\
+				\hline
+				4 & 0.235 & 0.235 & 0.231 & 0.234 & 0.231 & \\
+				\hline
+				5 & 0.223 & 0.223 & 0.218 & 0.222 & 0.219 & \\
+				\hline
+				6 & 0.205 & 0.211 & 0.205 & 0.211 & 0.207 & \\
+				\hline
+				7 & 0.201 & 0.200 & 0.194 & 0.200 & 0.197 & \\
+				\hline
+				8 & 0.190 & 0.190 & 0.185 & 0.190 & 0.187 & \\
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+
+		\noindent Intervalli misurati da 15cm in secondi:
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.339 & 0.341 & 0.339 & 0.340 & 0.337 & \\
+				\hline
+				2 & 0.318 & 0.319 & 0.319 & 0.319 & 0.317 & \\
+				\hline
+				3 & 0.298 & 0.299 & 0.299 & 0.299 & 0.297 & \\
+				\hline
+				4 & 0.281 & 0.282 & 0.282 & 0.281 & 0.280 & \\
+				\hline
+				5 & 0.265 & 0.266 & 0.266 & 0.266 & 0.268 & \\
+				\hline
+				6 & 0.250 & 0.253 & 0.251 & 0.251 & 0.251 & \\
+				\hline
+				7 & 0.233 & 0.237 & 0.236 & 0.236 & 0.237 & \\
+				\hline
+				8 & 0.219 & 0.225 & 0.224 & 0.224 & 0.224 & \\
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+
+		\noindent Intervalli misurati da 18cm in secondi:
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.363 & 0.368 & 0.367 & 0.368 & 0.362 & \\
+				\hline
+				2 & 0.339 & 0.342 & 0.341 & 0.344 & 0.338 & \\
+				\hline
+				3 & 0.318 & 0.320 & 0.320 & 0.323 & 0.318 & \\
+				\hline
+				4 & 0.298 & 0.301 & 0.300 & 0.302 & 0.298 & \\
+				\hline
+				5 & 0.282 & 0.283 & 0.282 & 0.285 & 0.281 & \\
+				\hline
+				6 & 0.261 & 0.265 & 0.269 & 0.269 & 0.264 & \\
+				\hline
+				7 & 0.247 & 0.251 & 0.251 & 0.255 & 0.251 & \\
+				\hline
+				8 & 0.233 & 0.237 & 0.232 & 0.238 & 0.238 & \\
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+.\\\\\\\\\\\\\\\\\\\\\\\\\\
+		\noindent Intervalli misurati da 30cm in secondi:
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.462 & 0.459 & 0.460 & 0.463 & 0.460 & \\
+				\hline
+				2 & 0.425 & 0.424 & 0.425 & 0.422 & 0.424 & \\
+				\hline
+				3 & 0.394 & 0.390 & 0.395 & 0.391 & 0.392 & \\
+				\hline
+				4 & 0.365 & 0.364 & 0.368 & 0.364 & 0.365 & \\
+				\hline
+				5 & 0.344 & 0.340 & 0.339 & 0.340 & 0.340 & \\
+				\hline
+				6 & 0.323 & 0.320 & 0.323 & 0.318 & 0.320 & \\
+				\hline
+				7 & 0.299 & 0.299 & 0.304 & 0.298 & 0.298 & \\
+				\hline
+				8 & 0.286 & 0.282 & 0.281 & 0.280 & 0.281 & \\
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+	
+	\noindent Sfruttando la relazione \(log(t_{n}) = log(\frac{2v_{0}}{g})+nlog(e_{v})\), che evidenzia la dipendenza lineare del \(log(t_{n})\) dal numero di rimbalzi n, abbiamo rappresentato i dati ricavati con Pyphox nel grafico in Figura 3. Il grafico riassume i dati relativi a diverse altezze di partenza per la stessa pallina. 
+	
+	\begin{figure}[!ht]
+		\captionsetup{labelformat = empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\resizebox{0.7 \textwidth}{!}{   %resize table
+				%\input{computed_data/hist_and_gauss.pgf}
+				\includegraphics{Metodo2/computed_data/graficoLog_pallina1.png}
+			} %close resize
+		} %close centering
+		\caption{Figura3: log\(\Delta t_{(n)}\) - pallina da ping pong su parquet}
+	\end{figure}
+
+.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\	
+	\noindent Abbiamo ricavato il coefficiente angolare di ciascuna delle 5 rette tramite il metodo dei minimi quadrati.\\
+	
+	\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\resizebox{0.7 \textwidth}{!}{   %resize table
+				%\input{computed_data/hist_and_gauss.pgf}
+				\includegraphics{Metodo2/computed_data/graficoLog_interpolato_pallina1.png}
+			} %close resize
+		} %close centering
+
+	\end{figure}
+	\noindent Così facendo si ottengono 5 stime del coefficiente di restituzione:
+	 \[e_{v}= 10^{B} \pm 10^{B}ln(10)\sigma_{B}\]
+	 che possono essere combinate in una media pesata come \(\bar{e_{v}} = \frac{\sum\frac{e_{vi}}{\sigma_{i}}}{\sum\frac{1}{\sigma _{i}}} \pm \sqrt{\frac{1}{\sum \frac{1}{\sigma _{i}}}}\).
+	
+	\[\begin{matrix}
+		$8cm:$ & $\(ev = 0.9754 \pm 0.0002\)$ &  \\ 
+		$10cm:$ & $\(ev = 0.9716 \pm 0.0003\)$ &  \\ 
+		$15cm:$ & $\(ev = 0.9620 \pm 0.0002\)$ & $\(\qquad \Rightarrow \quad \bar{e_{v}} = 0.9625 \pm 0.0001\)$\\ 
+		$18cm:$ & $\(ev = 0.9589 \pm 0.0004\)$ &  \\ 
+		$30cm:$ & $\(ev = 0.9426 \pm 0.0003\)$ & 
+	\end{matrix}\]
+	\noindent Notiamo che questa stima è molto più precisa di quella ottenuta con il metodo 1. Confrontiamo le stime ottenute con i due metodi attraverso il test della compatibilità:
+	\[t = \frac{ \left |ev_{metodo1}  - ev_{metodo2} \right |}{\sqrt{\sigma_{1}^{2}+ \sigma_{2}^{2}}} = 1,06  \]
+	\noindent Secondo i valori tabulati, la probabilità che la differenza sia dovuta solo ad errori casuali è del 27\(\%\), in quanto maggiore di 5\(\%\) la consideriamo accettabile.\\\\\\\\\\
+	\section*{pallina da tennis su gres porcellanato}
+	\subsubsection*{metodo 1}
+	\noindent Di seguito riportiamo le misure delle altezze raggiunte dopo il primo rimbalzo in centimetri.\\\\
+Altezza di partenza : \(h_{0}\) = 65cm
+
+\begin{table}[!ht]
+	\centering
+	\input{Metodo1/tabelle/altezze_pallina3_1.tex}
+\end{table}
+\noindent Altezza di partenza : \(h_{0}\) = 55cm
+
+\begin{table}[!ht]
+	\centering
+	\input{Metodo1/tabelle/altezze_pallina3_2.tex}
+\end{table}
+\noindent	Altezza di partenza : \(h_{0}\) = 45cm
+
+\begin{table}[!ht]
+	\centering
+	\input{Metodo1/tabelle/altezze_pallina3_3.tex}
+\end{table}
+\noindent	Altezza di partenza : \(h_{0}\) = 35cm
+
+\begin{table}[!ht]
+	\centering
+	\input{Metodo1/tabelle/altezze_pallina3_4.tex}
+\end{table}
+\noindent	Altezza di partenza : \(h_{0}\) = 25cm
+
+\begin{table}[!ht]
+	\centering
+	\input{Metodo1/tabelle/altezze_pallina3_5.tex}
+\end{table}
+
+\noindent Abbiamo calcolato la media di ogni altezza massima h1 e l'errore su tale stima, di sotto riportiamo una tabella riassuntiva:\\
+
+\begin{figure}[!htbp]
+	\makebox[1 \textwidth][c]{       %centering table
+		\begin{tabular}{c|c|c}
+			
+			\(h_{0}\) (cm) & media \(h_{1}\) (cm) & \(\sigma_{m}\) (cm)\\
+			\hline
+			
+			25 & 12.87 &  0.102\\
+			
+			35 & 19.76 &  0.157\\
+			
+			45 & 25.01 & 0.094\\
+			
+			55 & 29.05 & 0.222\\
+			
+			65 & 32.8 & 0.182\\
+			\hline
+		\end{tabular}
+	} %close centering
+\end{figure}
+.\\\\\\\\\\\\\\\\\\
+	%grafico dei punti pallina3
+	\begin{figure}[!ht]
+		\captionsetup{labelformat = empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\resizebox{0.60 \textwidth}{!}{   %resize table
+				%\input{computed_data/hist_and_gauss.pgf}
+				\includegraphics{Metodo1/computed_data/zoom_pallina3.png}
+			} %close resize
+		} %close centering
+		\caption{Figura4: \(h1_{(h0)}\) - pallina da tennis su gres porcellanato}
+	\end{figure}
+	
+	\noindent Utilizzando il metodo dei minimi quadrati pesati abbiamo calcolato il coefficiente angolare e l'intercetta della retta interpolata:\\
+	\[ con\quad\Delta = N(\sum \frac{x_{i}^{2}}{\sigma _{y_{i}}^{2}})-(\sum \frac{x_{i}}{\sigma _{y_{i}}^{2}})^{2}\]\\
+	\[B = \frac{N(\sum\frac{x_{i}y_{i}}{\sigma _{y_{i}}^{2}})-\sum\frac{x_{i}}{\sigma _{y_{i}}^{2}}\sum\frac{y_{i}}{\sigma _{y_{i}}^{2}}}{\Delta } \quad
+	\sigma _{B} = \sqrt{\frac{\sum \frac{1}{\sigma _{y_{i}}^{2}}}{\Delta}} \qquad
+	\Rightarrow \qquad B = 0.524 \pm 0.005\]\\
+	\[A = \frac{\sum \frac{(x_{i})^{2}}{\sigma _{y_{i}}^{2}}\sum \frac{(y_{i})^{2}}{\sigma _{y_{i}}^{2}}-\sum \frac{x_{i}}{\sigma _{y_{i}}^{2}}\sum \frac{x_{i}y_{i}}{\sigma _{y_{i}}^{2}}}{\Delta} \quad  \sigma _{A} = \sqrt{\frac{\sum \frac{x^{2}}{\sigma _{y_{i}}^{2}}}{\Delta}} \qquad \Rightarrow \qquad A = (0.559 \pm 0.2) cm\]\\
+	
+	%retta interpolata pallina 3
+	\begin{figure}[!ht]
+		\captionsetup{labelformat = empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\resizebox{0.7 \textwidth}{!}{   %resize table
+				\includegraphics{Metodo1/computed_data/interpolazione_pallina3.png}
+			} %close resize
+		} %close centering
+		\caption{Figura5: interpolazione dei dati - pallina da tennis su gres porcellanato}
+	\end{figure}
+	
+	Ricaviamo il coefficiente di restituzione da:
+	
+	\[ev = \sqrt{\frac{h_{1}}{h_{0}}} \rightarrow ev = \sqrt{B}\]
+	
+	\makebox[\textwidth]{
+		{	
+			\small
+			dove B è il coefficiente angolare della retta \(h_{1}(h_{0})\)
+		}
+	}
+	\\\\
+	Eseguendo il calcolo e ricavando \(\sigma_{ev}\) attraverso la propagazione degli errori come \(\sigma _{ev} = \frac{\sigma _{B}}{2\sqrt{B}}\) abbiamo ottenuto \(ev = 0.724 \pm 0.003\).\\
+	\noindent Tramite il calcolo del chi quadro abbiamo testato l'ipotesi che la distribuzione fosse effettivamente lineare
+	\[\chi ^{2} = \sum \left ( \frac{y_{i}-A-BX_{i}}{\sigma_{i}} \right )^{2} = 27.8\]
+	\noindent considerando 3 gradi di libertà \(\tilde{\chi}^{2} = 9.27 \) la probabilità che l'ipotesi sia corretta è inferiore al 5\(\%\).\\
+	Poichè non possiamo considerare valida l'ipotesi che le misure effettuate si distribuiscano in maniera lineare, abbiamo calcolato anche per questa pallina il contributo dell'attrito aereo; considerando \(h_{lim} = 50 cm\), la massa della pallina come 0.056Kg ed il diametro d = 0.202 metri risulta:
+	\[\frac{F_{attrito \quad aereo}}{F_{peso}} = \frac{\rho_{aria} \pi \cdot 0.4 d^{2}}{4m}h_{lim} =  0.14\]
+	poichè al di sopra dei 50cm la pallina da tennis viene trattenuta da una forza pari al 14 \(\%\) del suo peso, abbiamo ridotto la regione di interpolazione al di sotto dei 50 cm, escludendo i primi due punti (con \(h_{0}\) 65cm e 55cm).\\
+	I parametri della retta interpolata corretta sono
+	\[B =0.606 \pm 0.007\]
+	\[A =(-2.13 \pm 0.26) cm\]
+	e ci portano a stimare il coefficiente di restituzione corretto come: \(ev =  0.778 \pm 0.004\). Poichè \(\chi ^{2}corretto = 2.28\), nel caso con soli 3 punti possiamo considerare l'ipotesi vera con una sicurezza del 14 \(\%\).\\
+.\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	\subsubsection*{metodo 2}
+	
+	\noindent gli intervalli misurati da 65cm  in secondi:
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.547 & 0.510 & 0.535 & 0.535 & 0.533 & \\
+				\hline
+				2 & 0.412 & 0.383 & 0.402 & 0.398 & 0.404 & \\
+				\hline
+				3 & 0.314 & 0.306 & 0.315 & 0.303 & 0.306 & \\
+				\hline
+				4 & 0.245 & 0.225 & 0.231 & 0.242 & 0.234 & \\
+				
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+
+	\noindent gli intervalli misurati da 55cm in secondi:
+	
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.496 & 0.505 & 0.504 & 0.500 & 0.499 & \\
+				\hline
+				2 & 0.384 & 0.386 & 0.375 & 0.375 & 0.382 & \\
+				\hline
+				3 & 0.290 & 0.293 & 0.284 & 0.293 & 0.286 & \\
+				\hline
+				4 & 0.230 & 0.233 & 0.226 & 0.235 & 0.228 & \\
+				
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+	
+
+	\noindent gli intervalli misurati da 45cm in secondi:
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.453 & 0.459 & 0.456 & 0.458 & 0.458 & \\
+				\hline
+				2 & 0.354 & 0.343 & 0.351 & 0.345 & 0.348 & \\
+				\hline
+				3 & 0.263 & 0.256 & 0.264 & 0.276 & 0.270 & \\
+				\hline
+				4 & 0.199 & 0.206 & 0.212 & 0.190 & 0.210 & \\
+				
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+
+	\noindent gli intervalli misurati da 35cm  in secondi:
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.411 & 0.407 & 0.408 & 0.410 & 0.407 & \\
+				\hline
+				2 & 0.305 & 0.309 & 0.308 & 0.311 & 0.311 & \\
+				\hline
+				3 & 0.242 & 0.240 & 0.235 & 0.236 & 0.240 & \\
+				\hline
+				4 & 0.178 & 0.183 & 0.177 & 0.177 & 0.186 & \\
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+
+	\noindent gli intervalli misurati da 25cm  in secondi:
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.350 & 0.349 & 0.352 & 0.347 & 0.355 & \\
+				\hline
+				2 & 0.267 & 0.268 & 0.271 & 0.268 & 0.272 & \\
+				\hline
+				3 & 0.203 & 0.215 & 0.209 & 0.203 & 0.206 & \\
+				\hline
+				4 & 0.153 & 0.144 & 0.146 & 0.150 & 0.160 & \\
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+.\\\\\\\\\\\\\\\\\\
+	
+	\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\resizebox{0.70 \textwidth}{!}{   %resize table
+				%\input{computed_data/hist_and_gauss.pgf}
+				\includegraphics{Metodo2/computed_data/graficoLog_pallina3.png}
+			} %close resize
+		} %close centering
+		\caption{Figura6: log\(\Delta t_{(n)}\) - pallina da tennis su gres porcellanato}
+	\end{figure}
+	
+	\noindent Abbiamo ricavato il coefficiente angolare di ciascuna delle 5 rette tramite il metodo dei minimi quadrati.
+		\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\resizebox{0.7 \textwidth}{!}{   %resize table
+				%\input{computed_data/hist_and_gauss.pgf}
+				\includegraphics{Metodo2/computed_data/graficoLog_interpolato_pallina3.png}
+			} %close resize
+		} %close centering
+
+	\end{figure}
+	
+	
+	\noindent Abbiamo ottenuto le 5 stime del coefficiente di restituzione con la formula già utilizzata: \[e_{v}= 10^{B} \pm 10^{B}ln(10)\sigma_{B}\]
+	e calcolato la media pesata dei coefficienti anche per la pallina da tennis
+	
+	\[\begin{matrix}
+		$25cm:$ & $\(ev = 0.854 \pm 0.002\)$ &  \\ 
+		$35cm:$ & $\(ev = 0.832 \pm 0.001\)$ &  \\ 
+		$45cm:$ & $\(ev = 0.81 \pm 0.002\)$ & $\(\qquad \Rightarrow \quad \bar{e_{v}} = 0.8267 \pm 0.0007\)$\\ 
+		$55cm:$ & $\(ev = 0.81 \pm 0.001\)$ &  \\ 
+		$65cm:$ & $\(ev = 0.805 \pm 0.004\)$ & 
+	\end{matrix}\]
+\noindent Notiamo che questa stima è molto più precisa di quella ottenuta con il metodo 1. Confrontiamo le due misure per assicurarci che siano in accordo tra di loro:
+		\[t = \frac{ \left |ev_{metodo1}  - ev_{metodo2} \right |}{\sqrt{\sigma_{1}^{2}+ \sigma_{2}^{2}}} = 12  \]
+	\noindent La probabilità che la differenza sia dovuta solo ad errori casuali è inferiore al 5\(\%\). Non possiamo accettare tale discrepanza, per cui supponiamo di aver commesso errori sistematici che non siamo in grado di stimare.
+	\section*{pallina da golf su marmo}
+	\subsubsection*{metodo 1}
+	Riportiamo in centimetri le altezze massime raggiunte.\\\\
+\noindent Altezza di partenza : \(h_{0}\) = 80cm
+	\begin{table}[!ht]
+		\centering
+		\input{Metodo1/tabelle/altezze_pallina4_1.tex}
+	\end{table}
+
+\noindent Altezza di partenza : \(h_{0}\) = 90cm
+	\begin{table}[!ht]
+		\centering
+		\input{Metodo1/tabelle/altezze_pallina4_2.tex}
+	\end{table}
+
+\noindent Altezza di partenza : \(h_{0}\) = 100cm	
+	\begin{table}[!ht]
+		\centering
+		\input{Metodo1/tabelle/altezze_pallina4_3.tex}
+	\end{table}
+
+\noindent Altezza di partenza : \(h_{0}\) = 110cm	
+	\begin{table}[!ht]
+		\centering
+		\input{Metodo1/tabelle/altezze_pallina4_4.tex}
+	\end{table}
+	
+	\noindent Abbiamo calcolato la media di ogni altezza massima h1 e l'errore su tale stima, di sotto riportiamo una tabella riassuntiva:
+	
+	\begin{figure}[!htbp]
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|c|c}
+				
+				\(h_{0}\) (cm) & media \(h_{1}\) (cm) & \(\sigma_{m}\) (cm)\\
+				\hline
+				
+				80 & 63.83 &  0.148\\
+				
+				90 & 71.98 &  0.135\\
+				
+				100 & 79.02 & 0.232\\
+				
+				110 & 86.77 & 0.205\\
+				\hline
+			\end{tabular}
+		} %close centering
+	\end{figure}
+.\\\\\\\\\\\\\\
+	%grafico dei punti pallina 4
+	\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\resizebox{0.7 \textwidth}{!}{   %resize table
+				%\input{computed_data/hist_and_gauss.pgf}
+				\includegraphics{Metodo1/computed_data/zoom_pallina4.png}
+			} %close resize
+		} %close centering
+		\caption{Figura7 : \(h1_{(h0)}\) - pallina da golf su marmo}
+	\end{figure}
+	
+	\noindent Utilizzando il metodo dei minimi quadrati pesati  abbiamo calcolato il coefficiente angolare e l'intercetta della retta:\\
+	\[B = 0.761 \pm 0.008\]
+	\[A = (3.161 \pm 0.735) cm\]
+	\makebox[\textwidth]{
+		{	
+			\small
+			le formule utilizzate sono state indicate precedentemente
+		}
+	}
+	
+	%retta interpolata pallina 4
+	\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\resizebox{0.70 \textwidth}{!}{   %resize table
+				\includegraphics{Metodo1/computed_data/interpolazione_pallina4.png}
+			} %close resize
+		} %close centering
+		\caption{Figura8: interpolazione dei dati - pallina da golf su marmo}
+	\end{figure}
+.\\\\\\\\\\\\
+	Ricaviamo il coefficiente di restituzione da:
+	
+	\[ev = \sqrt{\frac{h_{1}}{h_{0}}} \rightarrow ev = \sqrt{B}\]
+	
+	\noindent Eseguendo il calcolo e ricavando \(\sigma_{ev}\) attraverso la propagazione degli errori come \(\sigma _{ev} = \frac{\sigma _{B}}{2\sqrt{B}}\) abbiamo ottenuto \(ev = 0.872 \pm 0.005\).\\\\
+	\noindent Il test del chi quadro riporta il seguente risultato:\\
+	\[\chi ^{2} = \sum \left ( \frac{y_{i}-A-BX_{i}}{\sigma_{i}} \right )^{2} = 0.931\]
+	\noindent considerando 2 gradi di libertà possiamo considerare l'ipotesi vera, con una sicurezza del 37 \(\%\). Concludiamo che su questa pallina l'attrito dell'aria non ha avuto effetti considerevoli nella caduta. Difatti considerando \(h_{lim} = 110 cm\) \[\frac{F_{attrito \quad aereo}}{F_{peso}} = 0.018\]
+	con una massa di 0.0415Kg ed un diametro di 0.042 metri, abbiamo perso solo l'1,8\(\%\) dell'accelerazione data dalla gravità.
+	\subsubsection*{metodo 2}
+	%metodo due pallina 4
+	gli intervalli misurati da 80cm in secondi:
+	
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.649 & 0.723 & 0.724 & 0.722 & 0.723 & \\
+				\hline
+				2 & 0.584 & 0.642 & 0.649 & 0.647 & 0.649 & \\
+				\hline
+				3 & 0.523 & 0.577 & 0.588 & 0.584 & 0.576 & \\
+				\hline
+				4 & 0.523 & 0.518 & 0.532 & 0.525 & 0.513 & \\
+				\hline
+				5 & 0.464 & 0.469 & 0.479 & 0.471 & 0.459 & \\
+				\hline
+				6 & 0.407 & 0.422 & 0.436 & 0.421 & 0.411 & \\
+				\hline
+				7 & 0.364 & 0.384 & 0.391 & 0.376 & 0.366 & \\
+				\hline
+				8 & 0.328 & 0.349 & 0.350 & 0.337 & 0.326 & \\
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+
+	\noindent gli intervalli misurati da 90cm in secondi:
+	
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.675 & 0.762 & 0.759 & 0.764 & 0.763 & \\
+				\hline
+				2 & 0.604 & 0.682 & 0.680 & 0.683 & 0.683 & \\
+				\hline
+				3 & 0.533 & 0.612 & 0.606 & 0.609 & 0.614 & \\
+				\hline
+				4 & 0.478 & 0.551 & 0.544 & 0.545 & 0.558 & \\
+				\hline
+				5 & 0.432 & 0.494 & 0.489 & 0.479 & 0.505 & \\
+				\hline
+				6 & 0.386 & 0.439 & 0.437 & 0.426 & 0.458 & \\
+				\hline
+				7 & 0.349 & 0.391 & 0.388 & 0.378 & 0.416 & \\
+				\hline
+				8 & 0.316 & 0.345 & 0.349 & 0.338 & 0.378 & \\
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+.\\\\\\	
+	\noindent gli intervalli misurati da 100cm in secondi:
+	
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.794 & 0.811 & 0.804 & 0.791 & 0.804 & \\
+				\hline
+				2 & 0.716 & 0.725 & 0.718 & 0.710 & 0.716 & \\
+				\hline
+				3 & 0.637 & 0.643 & 0.644 & 0.638 & 0.645 & \\
+				\hline
+				4 & 0.562 & 0.580 & 0.580 & 0.574 & 0.581 & \\
+				\hline
+				5 & 0.504 & 0.518 & 0.501 & 0.518 & 0.525 & \\
+				\hline
+				6 & 0.452 & 0.460 & 0.450 & 0.468 & 0.473 & \\
+				\hline
+				7 & 0.403 & 0.421 & 0.401 & 0.425 & 0.429 & \\
+				\hline
+				8 & 0.367 & 0.359 & 0.356 & 0.386 & 0.391 & \\
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+
+	\noindent gli intervalli misurati da 110cm in secondi:
+	\begin{figure}[!h]
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{c|*{7}{c}}
+				numero rimbalzo & lancio1 & lancio2 & lancio3 & lancio4 & lancio5 &\\
+				\hline
+				1 & 0.845 & 0.838 & 0.838 & 0.832 & 0.845 & \\
+				\hline
+				2 & 0.760 & 0.751 & 0.746 & 0.742 & 0.753 & \\
+				\hline
+				3 & 0.682 & 0.673 & 0.666 & 0.665 & 0.675 & \\
+				\hline
+				4 & 0.608 & 0.607 & 0.594 & 0.591 & 0.609 & \\
+				\hline
+				5 & 0.543 & 0.547 & 0.528 & 0.527 & 0.549 & \\
+				\hline
+				6 & 0.488 & 0.492 & 0.465 & 0.472 & 0.493 & \\
+				\hline
+				7 & 0.421 & 0.438 & 0.417 & 0.423 & 0.441 & \\
+				\hline
+				8 & 0.377 & 0.388 & 0.372 & 0.365 & 0.396 & \\
+				\hline
+			\end{tabular}
+		} 
+	\end{figure}
+
+	\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\resizebox{0.7 \textwidth}{!}{   %resize table
+				%\input{computed_data/hist_and_gauss.pgf}
+				\includegraphics{Metodo2/computed_data/graficoLog_pallina4.png}
+			} %close resize
+		} %close centering
+		\caption{Figura9: log\(\Delta t_{(n)}\) - pallina da golf su marmo}
+	\end{figure}
+.\\\\\\\\\\\\\\
+	\noindent Abbiamo ricavato il coefficiente angolare di ciascuna delle 5 rette tramite il metodo dei minimi quadrati.
+	
+	\begin{figure}[!htbp]
+		\captionsetup{labelformat=empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\resizebox{0.69 \textwidth}{!}{   %resize table
+				%\input{computed_data/hist_and_gauss.pgf}
+				\includegraphics{Metodo2/computed_data/graficoLog_interpolato_pallina4.png}
+			} %close resize
+		} %close centering
+
+	\end{figure}
+	
+	\noindent Le 5 stime del coefficiente di restituzione possono essere combinate in una media pesata.
+	
+	\[\begin{matrix}
+		$80cm:$ & $\(ev = 0.894 \pm 0.002\)$ &  \\ 
+		$90cm:$ & $\(ev = 0.882 \pm 0.004\)$ &  \\ 
+		$100cm:$ & $\(ev = 0.865 \pm 0.001\)$ & $\(\qquad \Rightarrow \quad \bar{e_{v}} = 0.8646 \pm 0.0008\)$\\ 
+		$110cm:$ & $\(ev = 0.855 \pm 0.001\)$ &  
+	\end{matrix}\]
+\noindent Questa stima è molto più precisa di quella ottenuta con il metodo 1; il confronto con la prima misura risulta:
+	\[t = \frac{ \left |ev_{metodo1}  - ev_{metodo2} \right |}{\sqrt{\sigma_{1}^{2}+ \sigma_{2}^{2}}} =  1.46 \]
+	\noindent la probabilità che la differenza sia dovuta solo ad errori casuali è del 13,4\(\%\), consideriamo l'ipotesi valida.\\\\\\\\\\\\\\\\\\\\\\\\\\
+	
+	\makebox[\textwidth]{
+		{
+			\small
+			La scrittura di un apposito programma Python ha permesso lo svolgimento dell'analisi dati
+		}
+	}
+	\makebox[\textwidth]{
+		{
+			\small
+			e la generazione dei grafici esposti
+		}
+	}
+\end{document}

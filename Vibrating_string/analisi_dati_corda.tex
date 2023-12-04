@@ -1,0 +1,384 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+
+
+
+\title{Propagazione delle onde su una corda vibrante\\ analisi dati}
+\author{Ali Matteo,\\Broggi Diana, Cantarini Giulia}
+\date{ }
+
+\usepackage{tabularx}
+\usepackage{natbib}
+%\usepackage[demo]{graphicx}
+\usepackage{graphicx}
+
+%\usepackage[margin=1.0in]{geometry}
+
+\usepackage{tikz}
+
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{amsmath, amsthm}
+
+\usepackage{mathrsfs}
+
+\usepackage{pgfplots}
+
+\usepackage{caption}
+
+
+
+%\pgfplotsset{width=4cm,compat=1.9}
+
+\theoremstyle{definition}
+\newtheorem{rich}{richiamo matematico}[section]
+
+
+
+
+
+%roba che crea comando per centrare immagine dentro immagine piu grande
+%https://tex.stackexchange.com/a/308286
+\newlength{\imagew}
+\newlength{\imageh}
+\newlength{\legendw}
+\newlength{\legendh}
+\newlength{\legendx}
+\newlength{\legendy}
+\newcommand{\graphicswithlegend}[6]{
+	\setlength{\imagew}{#1}
+	\settoheight{\imageh}{\includegraphics[width=\imagew]{#2}}
+	
+	\setlength{\legendw}{#3\imagew}
+	\settoheight{\legendh}{\includegraphics[width=\legendw]{#4}}
+	
+	\setlength{\legendx}{\imagew}
+	\addtolength{\legendx}{-\legendw}
+	\addtolength{\legendx}{-#5\imagew}
+	
+	\setlength{\legendy}{\imageh}
+	\addtolength{\legendy}{-\legendh}
+	\addtolength{\legendy}{-#6\imageh}
+	
+	\includegraphics[width=\imagew]{#2}%
+	\llap{
+		\hspace{-\the\legendx}
+		\raisebox{\legendy}{\includegraphics[width=\legendw]{#4}}
+		\hspace{\the\legendx}
+	}
+}
+
+
+
+\begin{document}
+	\pagenumbering{arabic}
+	\maketitle
+\section*{dati presi con bilancia e metro a nastro}
+Pesetti:
+\begin{figure}[!ht]
+	\captionsetup{labelformat=empty}
+	\caption{Massa pesetto da 200g (in g):}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{ccccc}
+			\hline
+			\hline
+			201.10 & 201.11 & 201.11 & 201.09 & 201.10\\
+			\hline
+			\hline
+		\end{tabular}
+	} 
+\caption{\((0.201102 \pm 0.000004)\) Kg}
+\end{figure}
+
+\begin{figure}[!ht]
+	\captionsetup{labelformat=empty}
+	\caption{Massa pesetti 300g+portapesi 50g (in g):}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{ccccc}
+			\hline
+			\hline
+			350.59 & 350.58 & 350.50 & 350.55 & 350.57\\
+			\hline
+			\hline
+		\end{tabular}
+	} 
+\caption{\((0.350558 \pm 0.000018)\) Kg}
+\end{figure}
+
+\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+	\caption{Massa pesetti 450g+portapesi 50g (in g):}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{ccccc}
+			\hline
+			\hline
+			450.96 & 450.95 & 450.96 & 450.96 & 450.97\\
+			\hline
+			\hline
+		\end{tabular}
+	} 
+\caption{\( (0.450960 \pm 0.000004) \) Kg}
+\end{figure}
+
+
+\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+	\caption{Massa pesetti 500g+portapesi 50g (in g):}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{ccccc}
+			\hline
+			\hline
+			550.50 & 550.51 & 550.50 & 550.50 & 550.51\\
+			\hline
+			\hline
+		\end{tabular}
+	} 
+\caption{\( (0.550504 \pm 0.000003)\) Kg}
+\end{figure}
+.\\\\\\\\\\\\\\\\\\
+Corde:
+\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+	\caption{Lunghezza corda viola (in metri):}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{ccccc}
+			\hline
+			\hline
+			1.745 & 1.740 & 1.743 & 1.745 & 1.740\\
+			\hline
+			\hline
+		\end{tabular}
+	} 
+\caption{\( (1.7426 \pm 0.0014)\) m}
+\end{figure}
+
+\begin{figure}[!ht]
+	\captionsetup{labelformat=empty}
+	\caption{Massa corda viola (in g):}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{cccccc}
+			\hline
+			\hline
+			3.82 & 3.83 & 3.83 & 3.82 & 3.84 & 3.83\\
+			\hline
+			\hline
+		\end{tabular}
+	} 
+\caption{\( (0.003828 \pm 0.000004) \)Kg}
+\end{figure}
+
+
+\begin{figure}[!ht]
+	\captionsetup{labelformat=empty}
+	\caption{Lunghezza corda bianca (in metri):}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{ccccc}
+			\hline
+			\hline
+			1.600 & 1.605 & 1.602 & 1.599 & 1.600\\
+			\hline
+			\hline
+		\end{tabular}
+	} 
+\caption{\( (1.6012 \pm 0.0014 )\)m}
+\end{figure}
+
+\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+\caption{Massa corda bianca (in g):}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{cccccc}
+			\hline
+			\hline
+			0.73 & 0.73 & 0.72 & 0.72 & 0.73 & 0.72\\
+			\hline
+			\hline
+		\end{tabular}
+	} 
+\caption{\( (0.000725 \pm 0.000003 )\) Kg}
+\end{figure}
+
+\begin{figure}[!ht]
+	\captionsetup{labelformat=empty}
+	\caption{Lunghezza corda rosa (in metri):}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{ccccc}
+			\hline
+			\hline
+			1.975 & 1.983 & 1.980 & 1.977 & 1.980\\
+			\hline
+			\hline
+		\end{tabular}
+	} 
+\caption{ \( (1.9790 \pm 0.0018)\) m}
+\end{figure}
+
+\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+\caption{Massa corda rosa (in g):}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{cccccc}
+			\hline
+			\hline
+			12.56 & 12.57 & 12.56 & 12.56 & 12.58 & 12.57\\
+			\hline
+			\hline
+		\end{tabular}
+	} 
+\caption{\( (0.0126 \pm 0.000005 )\) Kg}
+\end{figure}
+
+
+\section*{dati presi con l'oscillatore elettromeccanico}
+.\\
+	\begin{figure}[!htbp]
+		\captionsetup{labelformat=empty}
+		\caption{Parte1: frequenze e numero di armonica}
+		\makebox[1 \textwidth][c]{
+			\begin{tabular}{l|c}
+				armonica & frequenza (Hz)\\
+				\hline
+				fondamentale & \(13.88 \pm 0.01\)\\
+				\hline
+				seconda &  \(27.89 \pm 0.01\)\\
+				\hline
+				terza & \(42.13 \pm 0.01\)\\
+				\hline
+				quarta & \(56.85 \pm 0.01\)\\
+				\hline
+				quinta & \(71.87 \pm 0.01\)\\
+			\end{tabular}
+		} 
+		\caption{corda viola, L = 108 cm, massa pesetto=200g}
+	\end{figure}
+
+
+\begin{figure}[!ht]
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.9 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{computed_data/grafico_parte1.png}
+		} %close resize
+	} %close centering
+	%\caption{}
+\end{figure}
+\noindent Testiamo l'ipotesi che le misure siano correlate linearmente con il calcolo del coefficiente di correlazione lineare:
+\[ r = \frac{\sum (x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{(\sum x_{i}-\bar{x})^{2}(\sum y_{i}-\bar{y})^{2}}} = 0.99989\]
+\noindent Poichè la probabilità che 5 misure non correlate diano \(\left | r \right | \geq  0.99996\) è\(\simeq 0 \%\)(da valori tabulati) consideriamo accettabile l'ipotesi.\\\\
+
+\subsubsection*{calcolo della velocità di propagazione}
+\noindent Abbiamo eseguito l'interpolazione dei dati raccolti per la parte 1 al fine di ricavare il valore del coefficiente angolare:
+\[B = \frac{N\sum x_{i}y_{i}-\sum x_{i}\sum y_{i}}{N\sum x_{i}^{2}-(\sum x_{i})^{2}} \pm \sqrt{\frac{N}{\Delta }}\sigma _{i} =14.494 \pm 0.003 Hz\]
+\[A = \frac{\sum x_{i}^{2}\sum y_{i}-\sum x_{i}\sum y_{i}x_{i}}{N\sum x_{i}^{2}-(\sum x_{i})^{2}} \pm \sqrt{\frac{\sum x_{i}^{2}}{\Delta }}\sigma _{i} = -0.958 \pm 0.01 Hz\]
+\makebox[\textwidth]{
+	{
+		\small
+		\noindent considerando \(  \sigma_{y} = 0.01 Hz\): l'incertezza dello strumento
+	}
+}
+.\\
+\noindent poichè \(v = \sqrt{\frac{\tau}{\mu}}\)
+\[\begin{vmatrix}
+	v = 2LB & \\ 
+	& \Rightarrow v = 31.197 \pm 0.007 m/s\\ 
+	\sigma _{v} = 2L\sigma _{B} & 
+\end{vmatrix}\]
+
+\noindent per ottenere una stima di \(\sigma_{B}\) più considerevole abbiamo stimato a posteriori \(\sigma_{y}\):
+\[\sigma_{y} = \sqrt{\frac{\sum (y_{i}-A-Bx_{i})^{2}}{N-2}} = 0.39 Hz\]
+così facendo abbiamo ottenuto \(B = 14.49 \pm 0.12\) attraverso le formule precedenti e calcolato nuovamente v:
+\[v = B2L \pm 2L \sigma_{B} = 31.3 \pm 0.3 m/s\]
+da confrontare con il valore ricavato dai dati ottenuti con bilancia e metro a nastro di \(29.967 \pm 0.0003\) m/s: \(\frac{\left | x_{osservato}-x_{atteso} \right |}{\sigma_{x}}= 4 \rightarrow \) la probabilità che questa discrepanza sia dovuta solo ad errori casuali è \(< 0.3 \%\).
+
+\begin{figure}[!ht]
+	\captionsetup{labelformat=empty}
+	\caption{Parte2: frequenze e tensione}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{c|c}
+			tensione/$(9.81 m/s^{2})$ (Kg) & frequenza (Hz)\\
+			\hline
+			\(0.201102 \pm 0.000004\)  & \(27.89 \pm 0.01\)\\
+			\hline
+			\(0.350558 \pm 0.000018\)  &  \(36.29 \pm 0.01\)\\
+			\hline
+			\( 0.450960 \pm 0.000004 \) & \(41.46 \pm 0.01\)\\
+			\hline
+			\( 0.550504 \pm 0.000003\)   & \(46.23 \pm 0.01\)\\
+			\hline
+		\end{tabular}
+	} 
+\caption{corda viola, n=2, L=108 cm}
+\end{figure}
+
+ 
+\begin{figure}[!htbp]
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.9 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{computed_data/grafico_parte2.png}
+		} %close resize
+	} %close centering
+	%\caption{}
+\end{figure}
+
+\begin{figure}[!ht]
+		\captionsetup{labelformat=empty}
+	\caption{Parte3: frequenze e lunghezze}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{c|c}
+			lunghezza (m) & frequenza (Hz)\\
+			\hline
+			\(1.080 \pm 0.001 \) & \(69.90 \pm 0.01\)\\
+			\hline
+			\(1.102 \pm 0.001\) &  \(68.68 \pm 0.01\)\\
+			\hline
+			\(1.130  \pm 0.001\)& \(66.60 \pm 0.01 \)\\
+			\hline
+			\(1.183 \pm 0.001\) & \(63.60 \pm 0.01\)\\
+			\hline
+			\(1.215 \pm 0.001\) &  \(61.96 \pm 0.01\)\\
+		\end{tabular}
+	} 
+\caption{corda viola, n=3, massa pesetto = 550g}
+\end{figure}
+
+
+\begin{figure}[!ht]
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.9 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{computed_data/grafico_parte3.png}
+		} %close resize
+	} %close centering
+	%\caption{}
+\end{figure}
+
+\begin{figure}[!ht]
+	\captionsetup{labelformat=empty}
+	\caption{Parte4: frequenze e massa lineare}
+	\makebox[1 \textwidth][c]{
+		\begin{tabular}{l|c|c}
+			corda &\(\mu\) (Kg/m) & frequenza (Hz)\\
+			\hline
+			bianca &\( 0.000453  \pm 0.000002\)  & \(134.9 \pm 0.01\)\\
+			\hline
+			viola & \(0.002197 \pm 0.000003 \)&  \(61.96 \pm 0.01\)\\
+			\hline
+			rosa& \(0.006350 \pm 0.000006\)& \(39.26 \pm 0.01\)\\
+		\end{tabular}
+	} 
+	\caption{n= 3, L=121.5 cm, massa pesetto=550g}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.9 \textwidth}{!}{   %resize table
+			%\input{computed_data/hist_and_gauss.pgf}
+			\includegraphics{computed_data/grafico_parte4.png}
+		} %close resize
+	} %close centering
+	%\caption{}
+\end{figure}
+
+\end{document}
