@@ -1,6 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
-import dati
+import data
 from strumenti_utili_v4 import *
 
 #----------------PARTE1 con rotazione ----------------
