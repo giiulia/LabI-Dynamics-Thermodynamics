@@ -2,5 +2,4 @@
 __build
 __pycache__
 *.aux
-*.pdf
 *.gz
