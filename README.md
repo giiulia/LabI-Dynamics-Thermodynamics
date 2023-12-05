@@ -5,7 +5,7 @@ Laboratory experiences allowed us to explore all the basic dynamic and thermodyn
 - The [pendulum](/Simple_pendulum)'s period of oscilation is an indicator of the constant of acceleration g.
 - Observing the phenomena of [Reversible pendulum (or Kater pendulum) oscillations and the free fall of a metal ball](/Reversible_pendulum_and_free_fall) are two more accurate methods to obtain an estimate of g.
 - [Springs](/Spring) follow Hooke's law of elasticity.
-- With an experiment on different [vibrating_string](/Vibrating_string) was tested the dependence of the frequency of a transverse wave passing over a string on the physical characteristics of the string.
+- The motion of a [vibrating_string](/Vibrating_string) depends on the physical characteristics of the string and the tension to which it is subjected.
 - Through [Collisions](/Collisions) between two trolleys we experienced the differences between elastic and inelastic collisions.
 - The [coefficient of restitution](/Coefficient_of_restitution) of differnt kinds of balls was determined by bouncing the balls on different types of floors in our homes.
 - For [Calorimetry](/Calorimetry) measures we estimated the equivalent mass in water that is needed to absorb the same heat that is subtracted from the calorimeter and other objects in it, determined the specific heat of copper and verified the Joule constant and latent heat of ice
